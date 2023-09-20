@@ -1,4 +1,5 @@
 <template>
+    SUKA
 <div class="cards">
   <div class="coin-one">
     <div class="coin-title">
