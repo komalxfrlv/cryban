@@ -1,0 +1,3 @@
+<template>
+    AffiateView.vue
+</template>
