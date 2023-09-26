@@ -10,7 +10,7 @@
     </div>
     <div class="personal-cabinet">
       <text>Personal Cabinet</text>
-      <Icon icon="raphael:arrowdown" />
+      <Icon class="personal-icon" icon="raphael:arrowdown" />
     </div>
   </nav>
   <router-view/>
@@ -92,6 +92,15 @@ nav {
     width: 11%;
     display: flex;
     flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    text{
+      color: var(--black-color);
+    }
+    .personal-icon{
+      font-size: 20px;
+    }
   }
 }
 </style>

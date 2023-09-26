@@ -1,0 +1,135 @@
+{
+    {
+        "icon": "cib:btc",
+        "name": "BTC",
+        "to500":{
+            "dayproc": '0.25%',
+            "mounthproc": '7.5%',
+            "paproc": '91.25%'
+        },
+        "to5000":{
+            "dayproc": '0.3%',
+            "mounthproc": '9%',
+            "paproc": '109.5%'
+        },
+        "over5000":{
+            "dayproc": '0.4%',
+            "mounthproc": '12%',
+            "paproc": '146%'
+        }
+    },
+    {
+        "icon": 'cryptocurrency:ltc',
+        "name": 'LTC',
+        "to500":{
+            "dayproc": '0.35%',
+            "mounthproc": '8.5%',
+            "paproc": '101.25%'
+        },
+        to5000:{
+            dayproc: '0.4%',
+            mounthproc: '10%',
+            paproc: '110.5%'
+        },
+        over5000:{
+            dayproc: '0.44%',
+            mounthproc: '152%',
+            paproc: '1446%'
+        }
+    },
+    {
+        icon: 'formkit:bnb',
+        name: 'BNB',
+        to500:{
+            dayproc: '0.225%',
+            mounthproc: '7.55%',
+            paproc: '491.25%'
+        },
+        to5000:{
+            dayproc: '20.3%',
+            mounthproc: '29%',
+            paproc: '1059.5%'
+        },
+        over5000:{
+            dayproc: '50.4%',
+            mounthproc: '124%',
+            paproc: '1446%'
+        }
+    },
+    {
+        icon: 'cib:ethereum',
+        name: 'ETH',
+        to500:{
+            dayproc: '0.254%',
+            mounthproc: '7.52%',
+            paproc: '91.245%'
+        },
+        to5000:{
+            dayproc: '0.35%',
+            mounthproc: '92%',
+            paproc: '1509.5%'
+        },
+        over5000:{
+            dayproc: '0.44%',
+            mounthproc: '122%',
+            paproc: '1456%'
+        }
+    },
+    {
+        icon: 'cryptocurrency:trx',
+        name: 'TRX',
+        to500:{
+            dayproc: '0.225%',
+            mounthproc: '7.55%',
+            paproc: '91.225%'
+        },
+        to5000:{
+            dayproc: '0.35%',
+            mounthproc: '92%',
+            paproc: '109.52%'
+        },
+        over5000:{
+            dayproc: '0.45%',
+            mounthproc: '152%',
+            paproc: '1246%'
+        }
+    },
+    {
+        icon: 'formkit:tether',
+        name: 'Tether',
+        to500:{
+            dayproc: '0.255%',
+            mounthproc: '7.25%',
+            paproc: '91.225%'
+        },
+        to5000:{
+            dayproc: '0.35%',
+            mounthproc: '95%',
+            paproc: '109.54%'
+        },
+        over5000:{
+            dayproc: '0.42%',
+            mounthproc: '142%',
+            paproc: '1465%'
+        }
+    },
+    {
+        icon: 'mingcute:xrp-fill',
+        name: 'XRP',
+        to500:{
+            dayproc: '0.255%',
+            mounthproc: '7.52%',
+            paproc: '91.255%'
+        },
+        to5000:{
+            dayproc: '0.35%',
+            mounthproc: '92%',
+            paproc: '109.55%'
+        },
+        over5000:{
+            dayproc: '0.45%',
+            mounthproc: '122%',
+            paproc: '1456%'
+        }
+    },
+}
