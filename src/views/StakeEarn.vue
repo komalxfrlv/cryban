@@ -18,7 +18,7 @@
                     </div>
                 </div>
                 <div class="currency">
-                    <text>Select currency</text>
+                    <text class="currency-title">Select currency</text>
                     <div class="valut-blocks">
                         <div 
                             class="block" 
@@ -298,6 +298,9 @@ export default{
                 background-color: var(--valuta-color);
                 color: white !important;
                 .valute{color: white !important;}
+            }
+            .currency-title{
+                font-size: 1.2rem;
             }
         }
     }
