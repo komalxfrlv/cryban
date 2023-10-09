@@ -1,3 +1,3 @@
 <template>
-    AffiateView.vue
+    AFFINATE
 </template>

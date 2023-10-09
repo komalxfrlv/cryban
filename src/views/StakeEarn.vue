@@ -15,7 +15,7 @@
                         <div class="earn-desc">Earn BCoin through farming</div>
                     </div>
                     <div class="daily">
-                        <text>{{valuta[x].dailyProcent}}% daily</text>
+                        <text>{{days[y].dailyProcent}}% daily</text>
                     </div>
                 </div>
                 <!--CURRENCY-->
@@ -56,11 +56,11 @@
                 <div class="income">
                     <div class="result-income">
                         <text>Daily income</text>
-                        <text class="stake-coin">{{valuta[x].dailyProcent}} BCoin</text>
+                        <text class="stake-coin">{{days[y].dailyProcent}} BCoin</text>
                     </div>
                     <div class="result-income">
                         <text>Total income</text>
-                        <text class="stake-coin">{{ (amount + ((amount % valuta[x].dailyProcent) * days[y].day)).toFixed(0) }} BCoin</text>
+                        <text class="stake-coin">{{ (amount + ((amount % days[y].dailyProcent) * days[y].day)).toFixed(0) }} BCoin</text>
                     </div>
                 </div>
                 <div class="stake-now-button">
@@ -118,52 +118,49 @@ export default{
                 {
                     icon: 'cib:btc',
                     name: 'BTC',
-                    dailyProcent: 1.2
                 },
                 {
                     icon: 'cryptocurrency:ltc',
                     name: 'LTC',
-                    dailyProcent: 1.1
                 },
                 {
                     icon: 'formkit:bnb',
                     name: 'BNB',
-                    dailyProcent: 1.4
                 },
                 {
                     icon: 'cib:ethereum',
                     name: 'ETH',
-                    dailyProcent: 0.8
                 },
                 {
                     icon: 'cryptocurrency:trx',
                     name: 'TRX',
-                    dailyProcent: 0.6
                 },
                 {
                     icon: 'formkit:tether',
                     name: 'Tether',
-                    dailyProcent: 1.3
                 },
                 {
                     icon: 'mingcute:xrp-fill',
                     name: 'XRP',
-                    dailyProcent: 0.9
                 },
 
             ],
             days:[
                 {
-                    day: 30
+                    day: 30,
+                    dailyProcent: 0.7
                 },
                 {
-                    day: 60
+                    day: 60,
+                    dailyProcent: 0.9
                 },
                 {
-                    day: 90
+                    day: 90,
+                    dailyProcent: 1.2
                 },
                 {
-                    day: 120
+                    day: 120,
+                    dailyProcent: 1.5
                 }
             ]
         }
