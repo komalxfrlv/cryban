@@ -36,7 +36,8 @@ export default {
 :root{
   --link-active-text: #5175d0;
   --link-hover-text: #314985;
-  --gray-color: #27315e80;
+  // --gray-color: #27315e80;
+  --gray-color: #72758080;
   --black-color: #171717;
   --valuta-color: #1f1e3d;
 

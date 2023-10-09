@@ -7,6 +7,7 @@
         </div>
         <div class="grid-blocks">
             <div class="coin-pool">
+                <!--COIN TITLE-->
                 <div class="pool-title">
                     <div class="earn">
                         <div class="coin-icon">I</div>
@@ -14,9 +15,10 @@
                         <div class="earn-desc">Earn BCoin through farming</div>
                     </div>
                     <div class="daily">
-                        <text>1.2% daily</text>
+                        <text>{{valuta[x].dailyProcent}}% daily</text>
                     </div>
                 </div>
+                <!--CURRENCY-->
                 <div class="currency">
                     <text class="currency-title">Select currency</text>
                     <div class="valut-blocks">
@@ -26,18 +28,51 @@
                             @click="x = index"
                             :class="{ValutaSelect: x == index}"
                         >
-                            <Icon :icon="b.icon" />
-                            <text>{{ b.name }}</text>
+                            <Icon class="b-icon" :icon="b.icon" />
+                            <text class="valute">{{ b.name }}</text>
                         </div>
                     </div>
                 </div>
+                <!--PERIOD-->
+                <div class="period">
+                    <text class="period-title">Select period</text>
+                    <div class="days">
+                        <div 
+                            v-for="(day, index) in days" :key="day" 
+                            class="day" 
+                            @click="y=index"
+                            :class="{choosePeriod: y == index}"
+                        >
+                            <text>{{day.day}} days</text>
+                        </div>
+                    </div>
+                </div>
+                <!--AMOUNT-->
+                <div class="amount">
+                    <text class="amount-title">Amount to stake <text style="color: var(--gray-color)">(min. 100$)</text></text>
+                    <input type="number" min="100" v-model="amount" />
+                </div>
+                <!--INCOME-->
+                <div class="income">
+                    <div class="result-income">
+                        <text>Daily income</text>
+                        <text class="stake-coin">{{valuta[x].dailyProcent}} BCoin</text>
+                    </div>
+                    <div class="result-income">
+                        <text>Total income</text>
+                        <text class="stake-coin">{{ (amount + ((amount % valuta[x].dailyProcent) * days[y].day)).toFixed(0) }} BCoin</text>
+                    </div>
+                </div>
+                <div class="stake-now-button">
+                    <text>Stake now</text>
+                </div>
             </div>
-            <div class="transaction">
+            <!-- <div class="transaction">
                 <text>Transaction</text>
                 <div class="transaction-grafik">grafik</div>
-            </div>
+            </div> -->
             <div class="coin-value">
-                <div class="coin-icon">ICON</div>
+                <div class="coin-icon">I</div>
                 <div class="coin-name">
                     <text>BCoin</text>
                     <text>0.35 BCoin</text>
@@ -54,7 +89,7 @@
                 </div>
             </div>
             <div class="coin-bank">
-                <div class="coin-icon">ICON</div>
+                <div class="coin-icon">I</div>
                 <div class="coin-name">
                     <text>Bank Supra Coin</text>
                     <text>0 BSC</text>
@@ -77,141 +112,59 @@ export default{
     data(){
         return{
             x: 0,
+            y: 2,
+            amount: 100,
             valuta:[
                 {
                     icon: 'cib:btc',
                     name: 'BTC',
-                    to500:{
-                        dayproc: '0.25%',
-                        mounthproc: '7.5%',
-                        paproc: '91.25%'
-                    },
-                    to5000:{
-                        dayproc: '0.3%',
-                        mounthproc: '9%',
-                        paproc: '109.5%'
-                    },
-                    over5000:{
-                        dayproc: '0.4%',
-                        mounthproc: '12%',
-                        paproc: '146%'
-                    }
+                    dailyProcent: 1.2
                 },
                 {
                     icon: 'cryptocurrency:ltc',
                     name: 'LTC',
-                    to500:{
-                        dayproc: '0.35%',
-                        mounthproc: '8.5%',
-                        paproc: '101.25%'
-                    },
-                    to5000:{
-                        dayproc: '0.4%',
-                        mounthproc: '10%',
-                        paproc: '110.5%'
-                    },
-                    over5000:{
-                        dayproc: '0.44%',
-                        mounthproc: '152%',
-                        paproc: '1446%'
-                    }
+                    dailyProcent: 1.1
                 },
                 {
                     icon: 'formkit:bnb',
                     name: 'BNB',
-                    to500:{
-                        dayproc: '0.225%',
-                        mounthproc: '7.55%',
-                        paproc: '491.25%'
-                    },
-                    to5000:{
-                        dayproc: '20.3%',
-                        mounthproc: '29%',
-                        paproc: '1059.5%'
-                    },
-                    over5000:{
-                        dayproc: '50.4%',
-                        mounthproc: '124%',
-                        paproc: '1446%'
-                    }
+                    dailyProcent: 1.4
                 },
                 {
                     icon: 'cib:ethereum',
                     name: 'ETH',
-                    to500:{
-                        dayproc: '0.254%',
-                        mounthproc: '7.52%',
-                        paproc: '91.245%'
-                    },
-                    to5000:{
-                        dayproc: '0.35%',
-                        mounthproc: '92%',
-                        paproc: '1509.5%'
-                    },
-                    over5000:{
-                        dayproc: '0.44%',
-                        mounthproc: '122%',
-                        paproc: '1456%'
-                    }
+                    dailyProcent: 0.8
                 },
                 {
                     icon: 'cryptocurrency:trx',
                     name: 'TRX',
-                    to500:{
-                        dayproc: '0.225%',
-                        mounthproc: '7.55%',
-                        paproc: '91.225%'
-                    },
-                    to5000:{
-                        dayproc: '0.35%',
-                        mounthproc: '92%',
-                        paproc: '109.52%'
-                    },
-                    over5000:{
-                        dayproc: '0.45%',
-                        mounthproc: '152%',
-                        paproc: '1246%'
-                    }
+                    dailyProcent: 0.6
                 },
                 {
                     icon: 'formkit:tether',
                     name: 'Tether',
-                    to500:{
-                        dayproc: '0.255%',
-                        mounthproc: '7.25%',
-                        paproc: '91.225%'
-                    },
-                    to5000:{
-                        dayproc: '0.35%',
-                        mounthproc: '95%',
-                        paproc: '109.54%'
-                    },
-                    over5000:{
-                        dayproc: '0.42%',
-                        mounthproc: '142%',
-                        paproc: '1465%'
-                    }
+                    dailyProcent: 1.3
                 },
                 {
                     icon: 'mingcute:xrp-fill',
                     name: 'XRP',
-                    to500:{
-                        dayproc: '0.255%',
-                        mounthproc: '7.52%',
-                        paproc: '91.255%'
-                    },
-                    to5000:{
-                        dayproc: '0.35%',
-                        mounthproc: '92%',
-                        paproc: '109.55%'
-                    },
-                    over5000:{
-                        dayproc: '0.45%',
-                        mounthproc: '122%',
-                        paproc: '1456%'
-                    }
+                    dailyProcent: 0.9
                 },
 
+            ],
+            days:[
+                {
+                    day: 30
+                },
+                {
+                    day: 60
+                },
+                {
+                    day: 90
+                },
+                {
+                    day: 120
+                }
             ]
         }
     }
@@ -243,11 +196,13 @@ export default{
 .grid-blocks{
     display: grid;
     grid-template-columns: 70% 30%;
-    grid-template-rows: 50% 25% 25%;
+    grid-template-rows: 25% 25% 1fr;
     margin-top: 5vh;
     gap: 10px;
     .coin-pool{
-        
+        border: 1px solid var(--gray-color);
+        border-radius: 1.2rem;
+        padding: 16px;
         grid-column: 1;
         grid-row: 1/4;
         .pool-title{
@@ -294,30 +249,229 @@ export default{
             }
         }
         .currency{
-            .ValutaSelected{
-                background-color: var(--valuta-color);
-                color: white !important;
-                .valute{color: white !important;}
-            }
+            text-align: left;
+            margin-top: 1.5vh;
             .currency-title{
+                font-size: 1rem;
+                color: var(--gray-color);
+                font-weight: bold;
+            }
+            .valut-blocks{
+                margin-top: .5vh;
+                .ValutaSelect{
+                    background-color: var(--valuta-color);
+                    color: white !important;
+                    .valute{color: white !important;}
+                }
+                display: flex;
+                flex-direction: row;
+                flex-wrap: nowrap;
+                justify-content: space-between;
+                .block{
+                    cursor: pointer;
+                    border: 1px solid var(--gray-color);
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    align-items: center;
+                    padding: 8px;
+                    border-radius: 6px;
+                    width: 74px;
+                    height: 74px;
+                    .b-icon{
+                        font-size: 3rem;
+                    }
+                    .valute{
+                        font-size: 12px;
+                        margin-top: 1vh;
+                        font-weight: bold;
+                    }
+                }
+            }
+        }
+        .period{
+            text-align: left;
+            margin-top: 3vh;
+            .period-title{
+                font-size: 1rem;
+                color: var(--gray-color);
+                font-weight: bold;
+            }
+            .days{
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                margin-top: 1vh;
+                .choosePeriod{
+                    background-color: var(--valuta-color);
+                    text{
+                        color: white;
+                    }
+                }
+                .day{
+                    cursor: pointer;
+                    border: 1px solid var(--gray-color);
+                    width: 20%;
+                    border-radius: 6px;
+                    text-align: center;
+                    padding: 4px;
+                    text{
+                        font-size: 1rem;
+                        font-weight: bold;
+                    }
+                }
+            }
+        }
+        .amount{
+            margin-top: 4vh;
+            text-align: left;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            .amount-title{
+                position: absolute;
+                background-color: white;
+                top: -10px;
+                left: 10px;
+                font-size: 1rem;
+                color: var(--valuta-color);
+                font-weight: bold;
+            }
+            input{
+                -webkit-appearance: none;
+                -moz-appearance: textfield;
+                border: 1px solid var(--gray-color);
+                padding: 16px;
+                border-radius: 8px;
+                outline: none;
                 font-size: 1.2rem;
+                font-weight: 500;
+            }
+        }
+        .income{
+            margin-top: 3vh;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            .result-income{
+                background-color: #dde1f180;
+                padding: 8px;
+                border-radius: 6px;
+                width: 45%;
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                font-weight: bold;
+                text{
+                    color: var(--gray-color);
+                }
+                .stake-coin{
+                    color: var(--valuta-color);
+                }
+            }
+        }
+        .stake-now-button{
+            margin-top: 2vh;
+            color: white;
+            background-color: var(--link-active-text);
+            padding: 8px;
+            width: 45%;
+            font-weight: bold;
+            border-radius: 6px;
+            cursor: pointer;
+            &:hover{
+                background-color: var(--link-hover-text);
             }
         }
     }
-    .transaction{
-        border: 1px solid black;
+    // .transaction{
+    //     border: 1px solid black;
+    //     grid-column: 2;
+    //     grid-row: 1;
+    // }
+    .coin-value{
+        border: 1px solid var(--gray-color);
         grid-column: 2;
         grid-row: 1;
-    }
-    .coin-value{
-        border: 1px solid black;
-        grid-column: 2;
-        grid-row: 2;
+        border-radius: 1rem;
+        display: grid;
+        text-align: left;
+        grid-template-columns: 15% 85%;
+        grid-template-rows: 40% 60%;
+        padding: 16px;
+        font-size: 1rem;
+        font-weight: bold;
+        .coin-icon{
+            grid-column: 1;
+            grid-row: 1/3;
+            border: 1px solid var(--gray-color);
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .coin-name{
+            grid-column: 2;
+            grid-row: 1;
+            display: flex;
+            justify-content: space-between;
+            color: var(--valuta-color);
+        }
+        .coin-desc{
+            grid-column: 2;
+            grid-row: 2;
+            color: var(--gray-color);
+            margin-top: 1vh;
+            .available{
+                display: flex;
+                justify-content: space-between;
+            }
+            .staked{
+                display: flex;
+                justify-content: space-between;
+            }
+        }
     }
     .coin-bank{
-        border: 1px solid black;
+        border: 1px solid var(--gray-color);
         grid-column: 2;
-        grid-row: 3;
+        grid-row: 2;
+        border-radius: 1rem;
+        display: grid;
+        text-align: left;
+        grid-template-columns: 15% 85%;
+        grid-template-rows: 40% 60%;
+        padding: 16px;
+        font-size: 1rem;
+        font-weight: bold;
+        .coin-icon{
+            grid-column: 1;
+            grid-row: 1/3;
+            border: 1px solid var(--gray-color);
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .coin-name{
+            grid-column: 2;
+            grid-row: 1;
+            display: flex;
+            justify-content: space-between;
+            color: var(--valuta-color);
+        }
+        .coin-desc{
+            grid-column: 2;
+            grid-row: 2;
+            display: flex;
+            justify-content: space-between;
+            color: var(--gray-color);
+            margin-top: 1vh;
+        }
     }
 }
 </style>
